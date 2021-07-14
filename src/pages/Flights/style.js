@@ -8,4 +8,9 @@ const StyledSection = styled.section`
   margin-bottom: 60px;
 `;
 
-export { StyledSection };
+const NoDataWrapper = styled.div`
+  text-align: center;
+  margin: auto;
+`;
+
+export { StyledSection, NoDataWrapper };

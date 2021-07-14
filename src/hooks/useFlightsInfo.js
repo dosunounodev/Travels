@@ -1,28 +1,36 @@
 import useStoreDestination from './useStoreDestination';
 import useStoreOrigin from './useStoreOrigin';
 import { matchOriginAndDestination } from 'helpers/matchOriginAndDestination';
+import useStoreOutFlight from './useStoreOutFlight';
+import useStoreReturnFlight from './useStoreReturnFlight';
 
 const useFlightsInfo = () => {
-  const { selectedOrigin } = useStoreOrigin();
-  const { selectedDestination } = useStoreDestination();
+  const { selectedOrigin, setSelectedOrigin } = useStoreOrigin();
+  const { selectedDestination, setSelectedDestination } = useStoreDestination();
+  const { outFlight } = useStoreOutFlight();
+  const { returnFlight } = useStoreReturnFlight();
   const flights = matchOriginAndDestination(
     selectedOrigin?.code,
     selectedDestination?.code
   );
 
-  const flightToDestination = flights.filter(
+  const flightsToDestination = flights.filter(
     (flight) => flight.destination === selectedDestination.code
   );
-  const flightToOrigin = flights.filter(
+  const flightsToOrigin = flights.filter(
     (flight) => flight.destination === selectedOrigin.code
   );
 
   return {
     selectedOrigin,
+    setSelectedOrigin,
     selectedDestination,
+    setSelectedDestination,
     flights,
-    flightToDestination,
-    flightToOrigin,
+    flightsToDestination,
+    flightsToOrigin,
+    outFlight,
+    returnFlight,
   };
 };
 

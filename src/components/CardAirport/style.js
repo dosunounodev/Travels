@@ -57,9 +57,12 @@ const DataWrapper = styled.div`
   padding: 0 10px;
 
   p {
-    width: 40%;
+    width: 100%;
     font-size: 2rem;
     text-align: center;
+    @media screen and (min-width: 1200px) {
+      width: 40%;
+    }
   }
 
   p:first-child {

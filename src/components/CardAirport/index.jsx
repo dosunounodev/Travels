@@ -1,10 +1,10 @@
 import React from 'react';
+import useAirportCardInfo from 'hooks/useAirportCardInfo';
 import { StyledCard, ImageWrapper, DataWrapper } from './style';
 import airportImage from 'assets/pics/airportdummy.jpg';
-import useCardInfo from 'hooks/useCardInfo';
 
 const CardAirport = ({ cardData = {}, isDestination }) => {
-  const { isSelectedCard, handleSelect } = useCardInfo({
+  const { isSelectedCard, handleSelect } = useAirportCardInfo({
     cardData,
     isDestination,
   });

@@ -1,7 +1,7 @@
 import useStoreOrigin from 'hooks/useStoreOrigin';
 import useStoreDestination from 'hooks/useStoreDestination';
 
-const useCardInfo = ({ cardData, isDestination }) => {
+const useAirportCardInfo = ({ cardData, isDestination }) => {
   const { selectedOrigin, setSelectedOrigin } = useStoreOrigin();
   const { selectedDestination, setSelectedDestination } = useStoreDestination();
 
@@ -35,4 +35,4 @@ const useCardInfo = ({ cardData, isDestination }) => {
   };
 };
 
-export default useCardInfo;
+export default useAirportCardInfo;

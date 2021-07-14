@@ -1,16 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Title from 'components/Title';
 import CardAirportWrapper from 'components/CardAirportWrapper';
 import Button from 'components/Button';
-import useStoreOrigin from 'hooks/useStoreOrigin';
-import useStoreDestination from 'hooks/useStoreDestination';
+import useFlightsInfo from 'hooks/useFlightsInfo';
 import { routes } from 'data/routes';
 import { StyledSection } from './style';
 
 const Select = () => {
-  const { selectedOrigin } = useStoreOrigin();
-  const { selectedDestination } = useStoreDestination();
+  const {
+    selectedOrigin,
+    setSelectedOrigin,
+    selectedDestination,
+    setSelectedDestination,
+  } = useFlightsInfo();
+
   const destinations = selectedOrigin?.destinations;
+
+  useEffect(() => {
+    setSelectedOrigin(null);
+    setSelectedDestination(null);
+  }, [setSelectedOrigin, setSelectedDestination]);
+
   return (
     <>
       <StyledSection>
