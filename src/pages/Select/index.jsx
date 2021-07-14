@@ -5,8 +5,14 @@ import CardAirport from 'components/CardAirport';
 const Select = () => {
   return (
     <>
-      <h2>Choose your origin</h2>
-      <CardAirport />
+      <section>
+        <h2>Choose your origin</h2>
+        <CardAirport />
+      </section>
+      <section>
+        <h2>Choose your destination</h2>
+        <CardAirport />
+      </section>
     </>
   );
 };
