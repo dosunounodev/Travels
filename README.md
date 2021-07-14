@@ -1,6 +1,6 @@
-# CodeaTravels 🌠
+# CodeaTravels ✈️
 
-A flights searcher app
+A flight search application to find trips around Argentina
 
 ## Techs 🧑‍💻
 
