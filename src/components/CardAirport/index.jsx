@@ -1,16 +1,28 @@
 import React from 'react';
-import { StyledCard, ImageWrapper } from './style';
+import { StyledCard, ImageWrapper, DataWrapper } from './style';
 import airportImage from 'assets/pics/airportdummy.jpg';
+import useCardInfo from 'hooks/useCardInfo';
 
-const CardAirport = () => {
+const CardAirport = ({ cardData = {}, isDestination }) => {
+  const { isSelectedCard, handleSelect } = useCardInfo({
+    cardData,
+    isDestination,
+  });
+
   return (
-    <StyledCard>
+    <StyledCard onClick={handleSelect} isSelectedCard={isSelectedCard}>
       <ImageWrapper>
         <img src={airportImage} alt="airport" />
       </ImageWrapper>
 
-      <h3>{`Airport Code: ASU`}</h3>
-      <p>{`City: Asunción`}</p>
+      <DataWrapper isSelectedCard={isSelectedCard}>
+        <p>
+          Airport Code: <span>{`${cardData?.code}`}</span>
+        </p>
+        <p>
+          Airport City: <span>{`${cardData?.location?.cityName}`}</span>
+        </p>
+      </DataWrapper>
     </StyledCard>
   );
 };

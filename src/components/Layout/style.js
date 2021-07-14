@@ -14,6 +14,7 @@ const PageWrapper = styled.main`
   max-width: 1200px;
   min-height: calc(100vh - 100px);
   margin: 50px auto 0;
+  padding: 20px;
   background-color: #fff;
 `;
 

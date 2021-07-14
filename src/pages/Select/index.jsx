@@ -1,18 +1,45 @@
 import React from 'react';
-import CardAirport from 'components/CardAirport';
-// import routes from 'data/routes';
+import Title from 'components/Title';
+import CardAirportWrapper from 'components/CardAirportWrapper';
+import Button from 'components/Button';
+import useStoreOrigin from 'hooks/useStoreOrigin';
+import useStoreDestination from 'hooks/useStoreDestination';
+import { routes } from 'data/routes';
+import { StyledSection } from './style';
 
 const Select = () => {
+  const { selectedOrigin } = useStoreOrigin();
+  const { selectedDestination } = useStoreDestination();
+  const destinations = selectedOrigin?.destinations;
   return (
     <>
-      <section>
-        <h2>Choose your origin</h2>
-        <CardAirport />
-      </section>
-      <section>
-        <h2>Choose your destination</h2>
-        <CardAirport />
-      </section>
+      <StyledSection>
+        <Title>Choose your origin</Title>
+        <CardAirportWrapper cards={routes}></CardAirportWrapper>
+      </StyledSection>
+      <StyledSection>
+        <Title>Choose your destination</Title>
+        {selectedOrigin ? (
+          <CardAirportWrapper
+            areDestination
+            cards={destinations}
+          ></CardAirportWrapper>
+        ) : (
+          <p>Please Select an Origin</p>
+        )}
+      </StyledSection>
+      <StyledSection>
+        <Title>Select the flights</Title>
+        {selectedDestination ? (
+          <Button isLink to="/flights">
+            Lets Flight!
+          </Button>
+        ) : selectedOrigin ? (
+          <p>Please Select a Destination</p>
+        ) : (
+          <p>Please Select an Origin and Destination</p>
+        )}
+      </StyledSection>
     </>
   );
 };
